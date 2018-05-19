@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit bootstrap="./tests/bootstrap.php" verbose="true" colors="true">
+
+    <testsuites>
+        <testsuite name="OfficeRND Tests">
+            <directory>./tests</directory>
+        </testsuite>
+    </testsuites>
+
+    <logging>
+        <log type="coverage-text" target="php://stdout" showUncoveredFiles="false" lowUpperBound="50" highLowerBound="80" />
+        <log type="coverage-clover" target="./clover.xml" />
+    </logging>
+
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">./src</directory>
+            <exclude>
+                <directory>./vendor</directory>
+                <directory>./tests</directory>
+                <directory>./build</directory>
+            </exclude>
+        </whitelist>
+    </filter>
+
+    <php>
+        <const name="PHPUNIT_TESTSUITE" value="true" />
+        <!-- Enter your test account credentials to run tests against sandbox. -->
+        <const name="OFFICERND_SLUG" value="" />
+        <const name="OFFICERND_TOKEN" value="" />
+    </php>
+
+</phpunit>
